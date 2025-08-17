@@ -1,5 +1,11 @@
+-- local trouble_defaults = require("config.trouble.default")
+
+-- require("trouble").setup(trouble_defaults)
+
 require("trouble").setup {
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  -- opts = function ()
+  --   require "config.trouble.default"
+  -- end,
   cmd = "Trouble",
   keys = {
     {

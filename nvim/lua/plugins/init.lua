@@ -1,11 +1,12 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
+    event = "BufWritePre",
+    opts = function()
+      return require "configs.conform"
+    end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -100,19 +101,6 @@ return {
   },
 
   {
-    "epwalsh/obsidian.nvim",
-    version = "*",
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require "configs.obsidian"
-    end,
-  },
-
-  {
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
@@ -134,6 +122,7 @@ return {
 
   {
     "folke/trouble.nvim",
+    lazy = false,
     config = function()
       require "configs.trouble"
     end,
@@ -167,5 +156,21 @@ return {
 
   {
     "tpope/vim-fugitive",
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    lazy = false,
+    config = function()
+      require("diffview").setup {
+        enhanced_diff_hl = true, -- Enable enhanced diff highlighting
+        file_panel = {
+          win_config = {
+            position = "left", -- Position the file panel on the left
+            width = 35, -- Set the width of the file panel
+          },
+        },
+      }
+    end,
   }
 }

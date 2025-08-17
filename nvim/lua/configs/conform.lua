@@ -1,14 +1,26 @@
 local options = {
+  format_on_save = {
+    timeout_ms = 500, -- Timeout for formatting
+    lsp_fallback = true, -- Use LSP formatting if conform fails
+  },
+  -- Filetype → formatter chain (first available wins)
   formatters_by_ft = {
     lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" }, -- .jsx
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" }, -- .tsx
+
+    python = { "ruff_format", "black" },
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
+  -- Optional fine-tuning
+  -- formatters = {
+  --   stylua = { args = { "--search-parent-directories", "-" } },
+  --   prettierd = { env = { PRETTIERD_LOCAL_PRETTIER_ONLY = "1" } }, -- prefer project prettier
+  --   prettier = { args = { "--stdin-filepath", "$FILENAME" } },
+  --   ruff_format = {},
+  --   black = { args = { "--fast", "-" } },
   -- },
 }
 

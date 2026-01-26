@@ -15,23 +15,20 @@ return {
   },
 
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
     lazy = false,
-    inline = false,
-    config = function() -- Mapping tab is already used by NvChad
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      vim.g.copilot_tab_fallback = ""
-      -- The mapping is set to other key, see custom/lua/mappings
-      -- or run <leader>ch to see copilot mapping section
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false, auto_trigger = false },
+        panel = { enabled = false },
+      }
     end,
   },
-
   {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
+    dependencies = { "copilot.lua" },
     config = function()
-      require("copilot_cmp").setup {}
+      require("copilot_cmp").setup()
     end,
   },
 
@@ -48,8 +45,7 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     lazy = false,
     dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      -- { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+      { "zbirenbaum/copilot.lua" },
     },
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
@@ -172,5 +168,29 @@ return {
         },
       }
     end,
-  }
+  },
+
+  {
+    "tpope/vim-dadbod",
+    lazy = true,
+    cmd = { "DB", "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    lazy = true,
+    dependencies = { "tpope/vim-dadbod" },
+    cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_save_location = vim.fn.stdpath "data" .. "/db_ui"
+    end,
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    lazy = true,
+    dependencies = { "tpope/vim-dadbod" },
+    ft = { "sql", "mysql", "plsql" },
+  },
 }

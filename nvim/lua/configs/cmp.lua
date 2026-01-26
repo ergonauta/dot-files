@@ -2,27 +2,30 @@ local cmp = require "cmp"
 
 cmp.setup {
   sources = cmp.config.sources {
-    { name = "copilot" },
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = "copilot", priority = 1000, group_index = 2 },
+    { name = "nvim_lsp", priority = 900 },
+    { name = "path", priority = 500 },
+    { name = "buffer", priority = 300 },
+    { name = "vim-dadbod-completion" },
   },
-  mapping = cmp.mapping.preset.insert {
-    ["<Tab>"] = function(fallback)
-      -- If Copilot suggestion is visible, accept it
-      if require("copilot.suggestion").is_visible() then
-        require("copilot.suggestion").accept()
-      -- If cmp menu is visible, select next item
-      elseif cmp.visible() then
-        cmp.select_next_item()
-      -- If cursor is at line start or only whitespace, insert tab
-      elseif vim.fn.col "." == 1 or vim.fn.getline("."):sub(1, vim.fn.col "." - 1):match "^%s*$" then
-        vim.api.nvim_feedkeys("\t", "n", false)
-      else
-        fallback()
-      end
-    end,
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-  },
+
+  -- mapping = cmp.mapping.preset.insert {
+  --   ["<Tab>"] = cmp.mapping(function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_next_item()
+  --     else
+  --       fallback()
+  --     end
+  --   end, { "i", "s" }),
+  --
+  --   ["<S-Tab>"] = cmp.mapping(function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_prev_item()
+  --     else
+  --       fallback()
+  --     end
+  --   end, { "i", "s" }),
+  --
+  --   ["<CR>"] = cmp.mapping.confirm { select = true },
+  -- },
 }

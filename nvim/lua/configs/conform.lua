@@ -11,7 +11,7 @@ local options = {
     typescript = { "prettier" },
     typescriptreact = { "prettier" }, -- .tsx
 
-    python = { "ruff_format", "black" },
+    python = { "ruff_format" },
   },
 
   -- Optional fine-tuning

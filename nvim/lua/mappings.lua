@@ -9,14 +9,14 @@ map("i", "jk", "<ESC>")
 vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Copilot Chat" })
 
 -- Tmux navigation
-map("n", "<C-k>", ":wincmd k<CR>", { desc = "Tmux Navigate Up" })
-map("n", "<C-j>", ":wincmd j<CR>", { desc = "Tmux Navigate Down" })
-map("n", "<C-h>", ":wincmd h<CR>", { desc = "Tmux Navigate Left" })
-map("n", "<C-l>", ":wincmd l<CR>", { desc = "Tmux Navigate Right" })
-map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { desc = "Tmux Navigate Left" })
-map("n", "<C-j>", ":TmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
-map("n", "<C-k>", ":TmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
-map("n", "<C-l>", ":TmuxNavigateRight<CR>", { desc = "Tmux Navigate Right" })
+-- map("n", "<C-k>", ":wincmd k<CR>", { desc = "Tmux Navigate Up" })
+-- map("n", "<C-j>", ":wincmd j<CR>", { desc = "Tmux Navigate Down" })
+-- map("n", "<C-h>", ":wincmd h<CR>", { desc = "Tmux Navigate Left" })
+-- map("n", "<C-l>", ":wincmd l<CR>", { desc = "Tmux Navigate Right" })
+map("n", "<M-h>", ":TmuxNavigateLeft<CR>", { desc = "Tmux Navigate Left" })
+map("n", "<M-j>", ":TmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
+map("n", "<M-k>", ":TmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
+map("n", "<M-l>", ":TmuxNavigateRight<CR>", { desc = "Tmux Navigate Right" })
 
 -- Map NVChad rename to <leader>rn
 map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "LSP Rename" })
@@ -82,5 +82,5 @@ map("n", "<leader>gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Docu
 map("n", "<leader>gS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "Workspace Symbols" })
 
 -- ── Database Mappings ─────────────────────────
-vim.keymap.set("n", "<leader>du", "<cmd>DBUIToggle<CR>", { desc = "DB UI toggle" })
-vim.keymap.set("n", "<leader>df", "<cmd>DBUIFindBuffer<CR>", { desc = "DB find buffer" })
+vim.keymap.set("n", "<leader>dbt", "<cmd>DBUIToggle<CR>", { desc = "DB UI toggle" })
+vim.keymap.set("n", "<leader>dbb", "<cmd>DBUIFindBuffer<CR>", { desc = "DB find buffer" })

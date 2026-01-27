@@ -1,0 +1,19 @@
+[[mgr.prepend_keymap]]
+on  = [ "O", "l", "g" ]
+run = "shell --block -- lazygit"
+desc = "Lazygit"
+
+[[mgr.prepend_keymap]]
+on  = ["g", "d"]
+run = "cd ~/.config"
+desc = "Go dotfiles"
+
+[[mgr.prepend_keymap]]
+on  = ["g", "s"]
+run = "cd ~/Documents/projects/sergio-cota/sentinel-frontend-prod"
+desc = "Go Sentinel"
+
+[[mgr.prepend_keymap]]
+on  = ["e"]
+run = "shell --block -- nvim ."
+desc = "Open Neovim here"

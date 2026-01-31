@@ -9,10 +9,6 @@ map("i", "jk", "<ESC>")
 vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Copilot Chat" })
 
 -- Tmux navigation
--- map("n", "<C-k>", ":wincmd k<CR>", { desc = "Tmux Navigate Up" })
--- map("n", "<C-j>", ":wincmd j<CR>", { desc = "Tmux Navigate Down" })
--- map("n", "<C-h>", ":wincmd h<CR>", { desc = "Tmux Navigate Left" })
--- map("n", "<C-l>", ":wincmd l<CR>", { desc = "Tmux Navigate Right" })
 map("n", "<M-h>", ":TmuxNavigateLeft<CR>", { desc = "Tmux Navigate Left" })
 map("n", "<M-j>", ":TmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
 map("n", "<M-k>", ":TmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })

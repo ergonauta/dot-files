@@ -15,46 +15,12 @@ return {
   },
 
   {
-    "zbirenbaum/copilot.lua",
-    lazy = false,
-    config = function()
-      require("copilot").setup {
-        suggestion = { enabled = false, auto_trigger = false },
-        panel = { enabled = false },
-      }
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-
-  {
     "nvim-lua/plenary.nvim",
   },
 
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000, -- Ensure it loads first
-  },
-
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = false,
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-    },
-    config = function()
-      require("CopilotChat").setup {}
-    end,
-    -- See Commands section for default commands if you want to lazy load on them
   },
 
   {
@@ -98,14 +64,7 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-      "TmuxNavigatorProcessList",
-    },
+    lazy = false,
   },
 
   {
@@ -184,12 +143,5 @@ return {
     config = function()
       require "configs.dadbod"
     end,
-  },
-
-  {
-    "kristijanhusak/vim-dadbod-completion",
-    lazy = true,
-    dependencies = { "tpope/vim-dadbod" },
-    ft = { "sql", "mysql", "plsql" },
   },
 }

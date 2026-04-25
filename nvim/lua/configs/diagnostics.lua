@@ -1,4 +1,3 @@
--- lua/configs/diagnostics.lua
 vim.diagnostic.config {
   virtual_text = {
     spacing = 2,
@@ -13,17 +12,24 @@ vim.diagnostic.config {
       return msg
     end,
   },
+  -- Full diagnostic as virtual line on the current cursor line (0.12 native)
+  virtual_lines = { current_line = true },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+      [vim.diagnostic.severity.HINT] = "󰠠 ",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+    },
+  },
   float = {
     border = "rounded",
-    source = "always",
+    source = true,
   },
   severity_sort = true,
   update_in_insert = false,
 }
-
--- Show diagnostics automatically when you pause the cursor
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
-  end,
-})

@@ -5,6 +5,5 @@ cmp.setup {
     { name = "nvim_lsp", priority = 900 },
     { name = "path", priority = 500 },
     { name = "buffer", priority = 300 },
-    { name = "vim-dadbod-completion" },
   },
 }

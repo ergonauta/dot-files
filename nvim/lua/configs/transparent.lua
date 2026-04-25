@@ -1,40 +1,55 @@
 require("transparent").setup {
-  -- table: default groups
-  groups = {
-    "Normal",
-    "NormalNC",
-    "Comment",
-    "Constant",
-    "Special",
-    "Identifier",
-    "Statement",
-    "PreProc",
-    "Type",
-    "Underlined",
-    "Todo",
-    "String",
-    "Function",
-    "Conditional",
-    "Repeat",
-    "Operator",
-    "Structure",
-    "LineNr",
-    "NonText",
-    "SignColumn",
-    "CursorLine",
-    "CursorLineNr",
-    "StatusLine",
-    "StatusLineNC",
-    "EndOfBuffer",
-  },
-  -- table: additional groups that should be cleared
   extra_groups = {
-    "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
-    "NvimTreeNormal", -- NvimTree
+    -- Floats (Lazy, Mason, LspInfo, etc.)
+    "NormalFloat",
+    "FloatBorder",
+
+    -- NormalFloat/FloatBorder excluded so hover & float windows remain visible
+    "FloatTitle",
+
+    -- NvimTree
+    "NvimTreeNormal",
+    "NvimTreeNormalNC",
+    "NvimTreeWinSeparator",
+    "NvimTreeEndOfBuffer",
+
+    -- Telescope
+    "TelescopeNormal",
+    "TelescopeBorder",
+    "TelescopePromptNormal",
+    "TelescopePromptBorder",
+    "TelescopeResultsNormal",
+    "TelescopeResultsBorder",
+    "TelescopePreviewNormal",
+    "TelescopePreviewBorder",
+
+    -- Trouble
+    "TroubleNormal",
+
+    -- Noice / Notify
+    "NoiceCmdlinePopup",
+    "NotifyBackground",
+
+    -- Treesitter-context
+    "TreesitterContext",
+    "TreesitterContextLineNumber",
+
+    -- NvChad UI elements
+    "TbLineBufOn",
+    "TbLineBufOff",
+    "TbLineBufOnClose",
+    "TbLineBufOffClose",
+    "TbLineTabNewBtn",
+    "TbLineFill",
+    "NvimTreeCursorLine",
+
+    -- Misc
+    "WinSeparator",
+    "VertSplit",
+    "Pmenu",
+    "PmenuSbar",
   },
-  -- table: groups you don't want to clear
-  exclude_groups = {},
-  -- function: code to be executed after highlight groups are cleared
-  -- Also the user event "TransparentClear" will be triggered
-  on_clear = function() end,
+
+  -- Keep CursorLine visible so you can still see which line you're on
+  exclude_groups = { "CursorLine" },
 }

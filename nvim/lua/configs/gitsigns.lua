@@ -50,12 +50,12 @@ gitsigns.setup {
 
     -- git toggle (gt)
     map("n", "<leader>gtd", gitsigns.toggle_deleted, { desc = "Toggle deleted hunks" })
-    map("n", "<leader>gwt", gitsigns.toggle_current_line_blame, { desc = "Who toggle (line blame)" })
+    map("n", "<leader>gbt", gitsigns.toggle_current_line_blame, { desc = "Git blame toggle" })
 
-    -- git who / blame (gw)
-    map("n", "<leader>gwl", function()
+    -- git blame (gb)
+    map("n", "<leader>gbl", function()
       gitsigns.blame_line { full = true }
-    end, { desc = "Who line (blame)" })
+    end, { desc = "Git blame line" })
 
     -- git diff (gd)
     map("n", "<leader>gdi", gitsigns.diffthis, { desc = "Diff index" })

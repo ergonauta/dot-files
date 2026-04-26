@@ -18,24 +18,29 @@ map("i", "jk", "<ESC>")
 --  Toggle (<leader>l): th/x/k           = toggle hints, execute codelens, hover
 
 -- Go to / Navigate (bare g prefix)
+-- typescript-tools handles source-def natively; falls back to LSP for other langs
 map("n", "gd", function()
-  local clients = vim.lsp.get_clients { bufnr = 0, name = "ts_ld" }
+  local clients = vim.lsp.get_clients { bufnr = 0, name = "typescript-tools" }
   if #clients > 0 then
-    vim.cmd "LspTypescriptGoToSourceDefinition"
+    vim.cmd "TSToolsGoToSourceDefinition"
   else
     vim.lsp.buf.definition()
   end
 end, { desc = "Go to definition (source-aware)" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "Go to references" })
-map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "Go to implementation" })
-map("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+map("n", "gr", "<cmd>Glance references<cr>", { desc = "Go to references" })
+map("n", "gi", "<cmd>Glance implementations<cr>", { desc = "Go to implementation" })
+map("n", "gt", "<cmd>Glance type_definitions<cr>", { desc = "Go to type definition" })
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Go to document symbols" })
 map("n", "gS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "Go to workspace symbol" })
 
 -- Edit / Refactor (<leader>l prefix)
 map({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, { desc = "LSP Code action" })
 map("n", "<leader>lrn", vim.lsp.buf.rename, { desc = "LSP Rename symbol" })
+
+-- TypeScript imports (<leader>li — only active when typescript-tools client present)
+map("n", "<leader>lia", "<cmd>TSToolsAddMissingImports<cr>", { desc = "LSP import add missing" })
+map("n", "<leader>lio", "<cmd>TSToolsOrganizeImports<cr>", { desc = "LSP import organize" })
 map("n", "<leader>lf", function()
   require("conform").format { lsp_format = "fallback" }
 end, { desc = "LSP Format buffer" })
@@ -44,7 +49,7 @@ end, { desc = "LSP Format buffer" })
 map("n", "<leader>lth", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "LSP Toggle inlay hints" })
-map("n", "<leader>lt", function()
+map("n", "<leader>ltd", function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "LSP Toggle diagnostics" })
 map("n", "<leader>lx", vim.lsp.codelens.run, { desc = "LSP Run codelens" })
@@ -148,7 +153,7 @@ map("n", "<leader>gip", "<cmd>Octo issue url<CR>", { desc = "Issue copy url" })
 -- Notify
 vim.keymap.set("n", "<leader>nd", function()
   Snacks.notifier.hide()
-end, { desc = "Dismiss notifications" })
+end, { desc = "Notification dismiss" })
 vim.keymap.set("n", "<leader>nh", function()
   Snacks.notifier.show_history()
 end, { desc = "Notification history" })

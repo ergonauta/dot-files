@@ -27,7 +27,8 @@ capabilities.textDocument.completion.completionItem = {
 vim.lsp.config("*", { capabilities = capabilities })
 
 -- Enable servers (each reads its lsp/<name>.lua automatically)
-local servers = { "html", "cssls", "ts_ls", "jsonls", "lua_ls", "ruff", "pyright", "eslint" }
+-- ts_ls removed: typescript-tools.nvim manages tsserver directly (faster, source-def native)
+local servers = { "html", "cssls", "jsonls", "lua_ls", "ruff", "pyright", "eslint" }
 vim.lsp.enable(servers)
 
 -- Inlay hints (off by default, toggle with <leader>lh)
@@ -40,5 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- CodeLens (auto-refresh handled by enable())
-vim.lsp.codelens.enable(true)
+-- CodeLens (enable() added in 0.12; guard for 0.11 compat)
+if vim.lsp.codelens.enable then
+  vim.lsp.codelens.enable(true)
+end

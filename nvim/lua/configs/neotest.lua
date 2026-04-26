@@ -1,6 +1,10 @@
 require("neotest").setup {
   adapters = {
     require "neotest-vitest",
+    require "neotest-python" {
+      runner = "pytest",
+      python = ".venv/bin/python", -- use project venv when present
+    },
   },
   discovery = {
     filter_dir = function(name)

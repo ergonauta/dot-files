@@ -77,6 +77,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "marilari88/neotest-vitest",
+      "nvim-neotest/neotest-python",
     },
     keys = {
       {
@@ -84,70 +85,70 @@ return {
         function()
           require("neotest").run.run(vim.fn.expand "%")
         end,
-        desc = "Run file tests",
+        desc = "Test run file",
       },
       {
         "<leader>tn",
         function()
           require("neotest").run.run()
         end,
-        desc = "Run nearest test",
+        desc = "Test run nearest",
       },
       {
         "<leader>tl",
         function()
           require("neotest").run.run_last()
         end,
-        desc = "Run last test",
+        desc = "Test run last",
       },
       {
         "<leader>tS",
         function()
           require("neotest").run.run { suite = true }
         end,
-        desc = "Run test suite",
+        desc = "Test run suite",
       },
       {
         "<leader>tx",
         function()
           require("neotest").run.stop()
         end,
-        desc = "Stop test run",
+        desc = "Test stop",
       },
       {
         "<leader>ta",
         function()
           require("neotest").run.attach()
         end,
-        desc = "Attach to test",
+        desc = "Test attach",
       },
       {
         "<leader>tw",
         function()
           require("neotest").watch.toggle(vim.fn.expand "%")
         end,
-        desc = "Toggle test watch",
+        desc = "Test watch toggle",
       },
       {
         "<leader>ts",
         function()
           require("neotest").summary.toggle()
         end,
-        desc = "Toggle test summary",
+        desc = "Test summary toggle",
       },
       {
         "<leader>to",
         function()
           require("neotest").output.open { enter = true }
         end,
-        desc = "Open test output",
+        desc = "Test output open",
       },
       {
         "<leader>tO",
         function()
           require("neotest").output_panel.toggle()
         end,
-        desc = "Toggle test output panel",
+        desc = "Test output panel toggle",
       },
       {
         "]t",
@@ -186,10 +187,10 @@ return {
   {
     "christoomey/vim-tmux-navigator",
     keys = {
-      { "<M-h>", "<cmd>TmuxNavigateLeft<cr>" },
-      { "<M-j>", "<cmd>TmuxNavigateDown<cr>" },
-      { "<M-k>", "<cmd>TmuxNavigateUp<cr>" },
-      { "<M-l>", "<cmd>TmuxNavigateRight<cr>" },
+      { "<M-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Tmux navigate left" },
+      { "<M-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Tmux navigate down" },
+      { "<M-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Tmux navigate up" },
+      { "<M-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Tmux navigate right" },
     },
   },
 
@@ -205,12 +206,12 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     keys = {
-      { "<leader>trd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Trouble Diagnostics" },
-      { "<leader>trb", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Trouble Buffer diagnostics" },
-      { "<leader>trq", "<cmd>Trouble qflist toggle<cr>", desc = "Trouble Quickfix" },
-      { "<leader>trl", "<cmd>Trouble loclist toggle<cr>", desc = "Trouble Loclist" },
-      { "<leader>trs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Trouble Symbols" },
-      { "<leader>trr", "<cmd>Trouble lsp_references toggle<cr>", desc = "Trouble References" },
+      { "<leader>trd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Trouble diagnostics" },
+      { "<leader>trb", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Trouble buffer diagnostics" },
+      { "<leader>trq", "<cmd>Trouble qflist toggle<cr>", desc = "Trouble quickfix" },
+      { "<leader>trl", "<cmd>Trouble loclist toggle<cr>", desc = "Trouble loclist" },
+      { "<leader>trs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Trouble symbols" },
+      { "<leader>trr", "<cmd>Trouble lsp_references toggle<cr>", desc = "Trouble references" },
     },
     config = function()
       require "configs.trouble"
@@ -220,9 +221,6 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
@@ -257,24 +255,24 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewRefresh", "DiffviewFileHistory" },
     keys = {
-      { "<leader>dvo", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
-      { "<leader>dvc", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
-      { "<leader>dvr", "<cmd>DiffviewRefresh<cr>", desc = "Refresh Diffview" },
-      { "<leader>dvh", "<cmd>DiffviewFileHistory<cr>", desc = "File history in Diffview" },
-      { "<leader>dvf", "<cmd>DiffviewFileHistory %<cr>", desc = "Current file history" },
-      { "<leader>dvm", "<cmd>DiffviewOpen origin/main...HEAD<cr>", desc = "Diff vs main" },
+      { "<leader>dvo", "<cmd>DiffviewOpen<cr>", desc = "Diffview open" },
+      { "<leader>dvc", "<cmd>DiffviewClose<cr>", desc = "Diffview close" },
+      { "<leader>dvr", "<cmd>DiffviewRefresh<cr>", desc = "Diffview refresh" },
+      { "<leader>dvh", "<cmd>DiffviewFileHistory<cr>", desc = "Diffview file history" },
+      { "<leader>dvf", "<cmd>DiffviewFileHistory %<cr>", desc = "Diffview current file history" },
+      { "<leader>dvm", "<cmd>DiffviewOpen origin/main...HEAD<cr>", desc = "Diffview diff vs main" },
       {
         "<leader>dvb",
         ":DiffviewOpen origin/...HEAD<Left><Left><Left><Left><Left><Left>",
-        desc = "Diff vs branch (prompt)",
+        desc = "Diffview diff vs branch",
       },
-      { "<leader>dv2", "<cmd>DiffviewOpen HEAD~2<cr>", desc = "Diff 2 commits back" },
+      { "<leader>dv2", "<cmd>DiffviewOpen HEAD~2<cr>", desc = "Diffview diff 2 commits back" },
       {
         "<leader>dvp",
         ":DiffviewOpen origin/main...HEAD -- <C-r>=expand('%:.')<CR>",
-        desc = "Diff current file vs main",
+        desc = "Diffview diff current file vs main",
       },
-      { "<leader>dvs", "<cmd>DiffviewOpen --staged<cr>", desc = "Diff staged changes" },
+      { "<leader>dvs", "<cmd>DiffviewOpen --staged<cr>", desc = "Diffview diff staged" },
     },
     config = function()
       require "configs.diffview"
@@ -358,6 +356,66 @@ return {
   },
 
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    config = function()
+      require "configs.typescript-tools"
+    end,
+  },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "configs.flash"
+    end,
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
+      { "S", mode = { "n" }, function() require("flash").treesitter() end, desc = "Flash treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Flash remote" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Flash treesitter search" },
+    },
+  },
+
+  {
+    "dnlhc/glance.nvim",
+    cmd = "Glance",
+    config = function()
+      require "configs.glance"
+    end,
+  },
+
+  {
+    "echasnovski/mini.ai",
+    event = "VeryLazy",
+    config = function()
+      require "configs.mini-ai"
+    end,
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    cmd = { "AerialToggle", "AerialOpen" },
+    keys = {
+      { "<leader>lo", "<cmd>AerialToggle<cr>", desc = "LSP outline toggle" },
+      { "<leader>fs", "<cmd>Telescope aerial<cr>", desc = "Find symbols (aerial)" },
+    },
+    config = function()
+      require "configs.aerial"
+    end,
+  },
+
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    config = function()
+      require "configs.auto-session"
+    end,
+  },
+
+  {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     config = function()
@@ -365,7 +423,7 @@ return {
     end,
     keys = {
       { "<leader>c", nil, desc = "Claude" },
-      { "<leader>cc", "<cmd>ClaudeCodeFocus<cr>", mode = { "n", "t" }, desc = "Claude Code (focus toggle)" },
+      { "<leader>cc", "<cmd>ClaudeCodeFocus<cr>", mode = { "n", "t" }, desc = "Claude focus toggle" },
       { "<leader>ch", "<cmd>ClaudeCodeClose<cr>", desc = "Claude Hide" },
       { "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Claude Resume" },
       { "<leader>cn", "<cmd>ClaudeCode --continue<cr>", desc = "Claude coNtinue" },

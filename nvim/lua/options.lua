@@ -11,6 +11,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.foldmethod = "expr"
     vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     vim.opt_local.foldenable = true
-    vim.opt_local.foldlevel = 00
+    vim.opt_local.foldlevel = 99
   end,
 })

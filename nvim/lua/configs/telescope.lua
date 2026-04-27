@@ -59,7 +59,7 @@ map("n", "<leader>f.", builtin.oldfiles, { desc = "Find recent files" })
 map("n", "<leader>f/", builtin.current_buffer_fuzzy_find, { desc = "Find in buffer" })
 map("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
 map("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
-map("n", "<leader>fm", builtin.marks, { desc = "Find marks" })
+map("n", "<leader>fM", builtin.marks, { desc = "Find marks" })
 map("n", "<leader>fn", "<cmd>Noice telescope<CR>", { desc = "Find notifications" })
 
 -- Setup

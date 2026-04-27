@@ -3,7 +3,7 @@ require "nvchad.mappings"
 -- Remove NvChad git mappings that conflict
 vim.keymap.del("n", "<leader>cm") -- confilcts with ClaudeCodeSelectModel
 vim.keymap.del("n", "<leader>gt") -- duplicate of git status
-vim.keymap.del("n", "<leader>ma") -- makrks moved to <leader>fm
+vim.keymap.del("n", "<leader>ma") -- marks moved to <leader>fM
 
 local map = vim.keymap.set
 
@@ -97,7 +97,7 @@ end, { desc = "Git open log" })
 map("n", "<leader>prl", "<cmd>Octo pr list<CR>", { desc = "PR list" })
 map("n", "<leader>prs", "<cmd>Octo pr search<CR>", { desc = "PR search" })
 map("n", "<leader>prd", "<cmd>Octo pr diff<CR>", { desc = "PR diff" })
-map("n", "<leader>prc", "<cmd>Octo pr commits<CR>", { desc = "PR commits" })
+map("n", "<leader>prco", "<cmd>Octo pr commits<CR>", { desc = "PR commits" })
 map("n", "<leader>prf", "<cmd>Octo pr changes<CR>", { desc = "PR changed files" })
 map("n", "<leader>prk", "<cmd>Octo pr checks<CR>", { desc = "PR checks" })
 map("n", "<leader>prp", "<cmd>Octo pr url<CR>", { desc = "PR copy url" })
@@ -109,7 +109,7 @@ map("n", "<leader>prm", "<cmd>Octo pr merge<CR>", { desc = "PR merge" })
 map("n", "<leader>prr", "<cmd>Octo pr ready<CR>", { desc = "PR mark ready" })
 map("n", "<leader>prx", "<cmd>Octo pr close<CR>", { desc = "PR close" })
 map("n", "<leader>prR", "<cmd>Octo pr reopen<CR>", { desc = "PR reopen" })
-map("n", "<leader>prh", function()
+map("n", "<leader>prc", function()
   vim.ui.input({ prompt = "PR Number: " }, function(input)
     if input then
       vim.cmd("Octo pr checkout " .. input)

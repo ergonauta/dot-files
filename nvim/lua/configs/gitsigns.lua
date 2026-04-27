@@ -65,5 +65,14 @@ gitsigns.setup {
     map("n", "<leader>gdp", function()
       gitsigns.diffthis "~1"
     end, { desc = "Diff previous (HEAD~1)" })
+    map("n", "<leader>gdq", function()
+      vim.cmd "diffoff!"
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.api.nvim_buf_get_name(buf):match "^gitsigns://" then
+          vim.api.nvim_win_close(win, true)
+        end
+      end
+    end, { desc = "Diff close" })
   end,
 }

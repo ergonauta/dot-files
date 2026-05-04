@@ -181,8 +181,8 @@ map("n", "<leader>oo", "<cmd>Obsidian open<CR>", { desc = "Open in Obsidian app"
 map("n", "<leader>os", "<cmd>Obsidian search<CR>", { desc = "Search Obsidian notes" })
 map("n", "<leader>oq", "<cmd>Obsidian quick_switch<CR>", { desc = "Quick switch notes" })
 
--- Daily notes
-map("n", "<leader>ot", "<cmd>Obsidian today<CR>", { desc = "Today's daily note" })
+-- Daily notes (<leader>ot is reserved as Template/Tags group prefix)
+map("n", "<leader>od", "<cmd>Obsidian today<CR>", { desc = "Daily note (today)" })
 map("n", "<leader>oy", "<cmd>Obsidian yesterday<CR>", { desc = "Yesterday's daily note" })
 map("n", "<leader>oT", "<cmd>Obsidian tomorrow<CR>", { desc = "Tomorrow's daily note" })
 
@@ -207,3 +207,6 @@ map("i", "<C-c><C-c>", "- [ ] ", { desc = "Insert empty checkbox (insert mode)" 
 
 -- Paste image from clipboard
 map("n", "<leader>op", "<cmd>Obsidian paste_img<CR>", { desc = "Paste image" })
+
+-- Render markdown
+map("n", "<leader>or", "<cmd>RenderMarkdown toggle<CR>", { desc = "Render markdown toggle" })

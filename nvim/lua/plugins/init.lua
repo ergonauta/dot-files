@@ -1,5 +1,13 @@
 return {
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "configs.which-key"
+    end,
+  },
+
+  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -311,6 +319,15 @@ return {
   },
 
   {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = "markdown",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require "configs.render-markdown"
+    end,
+  },
+
+  {
     "karb94/neoscroll.nvim",
     event = "VeryLazy",
     config = function()
@@ -371,10 +388,38 @@ return {
       require "configs.flash"
     end,
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
-      { "S", mode = { "n" }, function() require("flash").treesitter() end, desc = "Flash treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Flash remote" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Flash treesitter search" },
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash jump",
+      },
+      {
+        "S",
+        mode = { "n" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Flash remote",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Flash treesitter search",
+      },
     },
   },
 

@@ -1,26 +1,7 @@
-local parsers = {
-  "bash",
-  "css",
-  "dockerfile",
-  "html",
-  "javascript",
-  "jsdoc",
-  "json",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "python",
-  "regex",
-  "sql",
-  "tsx",
-  "typescript",
-  "vim",
-  "vimdoc",
-  "yaml",
-}
-
--- main branch removed the Lua install API; parsers managed via build = ":TSUpdate"
--- Run :Lazy build nvim-treesitter or :TSUpdate to install missing parsers
+-- nvim-treesitter main branch moved queries from queries/ to runtime/queries/.
+-- Neovim's rtp lookup expects queries/ at the plugin root, so add runtime/ explicitly.
+local ts_plugin_dir = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter"
+vim.opt.rtp:prepend(ts_plugin_dir .. "/runtime")
 
 -- Enable treesitter highlighting for all buffers
 vim.api.nvim_create_autocmd("FileType", {
